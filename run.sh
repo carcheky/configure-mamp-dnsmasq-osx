@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo
+sudo ls /Applications/MAMP/conf/apache
 echo "
 ================================================================================
     Uninstall dnsmasq
