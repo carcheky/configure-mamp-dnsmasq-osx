@@ -54,4 +54,5 @@ echo "
     Starting MAMP
 ================================================================================
 "
+open /Applications/MAMP/
 open /Applications/MAMP/MAMP.app
