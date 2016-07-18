@@ -56,3 +56,10 @@ echo "
 "
 open /Applications/MAMP/
 open /Applications/MAMP/MAMP.app
+
+echo "
+================================================================================
+    Added sendmail_path to /Applications/MAMP/bin/php/*/php.ini
+================================================================================
+"
+find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/env catchmail -f catcher@mailcatcher.me" >> {}' \;
