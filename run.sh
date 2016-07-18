@@ -56,7 +56,7 @@ echo "
 "
 open /Applications/MAMP/
 open /Applications/MAMP/MAMP.app
-
+sleep 5
 echo "
 ================================================================================
     Added sendmail_path to /Applications/MAMP/bin/php/*/php.ini
@@ -64,5 +64,5 @@ echo "
 "
 find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/env catchmail -f catcher@mailcatcher.me" >> {}' \;
 mailcatcher -b
-sleep 5
+sleep 2
 php -r "mail('carcheky@gmail.com', 'testing mailcatcher', 'testing mailcatcher');"
