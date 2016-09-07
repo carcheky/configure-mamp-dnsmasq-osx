@@ -65,4 +65,4 @@ echo "
 find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/local/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
 mailcatcher -b
 sleep 2
-php -r "mail('carcheky@gmail.com', 'testing mailcatcher', 'testing mailcatcher');"
+php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
