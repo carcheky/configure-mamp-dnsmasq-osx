@@ -34,7 +34,6 @@ cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/http
 echo "
 Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
 " >> /Applications/MAMP/conf/apache/httpd.conf
-ls -la /Applications/MAMP/conf/apache/
 
 
 mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.${DATE}.backup
@@ -46,8 +45,17 @@ echo "
     VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
 </VirtualHost>
 " >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
-ls -la /Applications/MAMP/conf/apache/extra
+subl /Applications/MAMP/conf/apache
 
+echo "
+================================================================================
+    Added sendmail_path to /Applications/MAMP/bin/php/*/php.ini
+================================================================================
+"
+find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/local/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
+mailcatcher -b
+sleep 2
+php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
 
 
 echo "
@@ -58,12 +66,3 @@ echo "
 open /Applications/MAMP/
 open /Applications/MAMP/MAMP.app
 sleep 5
-echo "
-================================================================================
-    Added sendmail_path to /Applications/MAMP/bin/php/*/php.ini
-================================================================================
-"
-find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/local/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
-mailcatcher -b
-sleep 2
-php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
