@@ -41,7 +41,8 @@ mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/con
 echo "
 <VirtualHost *>
     UseCanonicalName Off
-    ServerAlias *.dev
+    ServerAlias *.%2
+    ServerAlias *.xip.io
     VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
 </VirtualHost>
 " >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
