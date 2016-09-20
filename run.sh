@@ -52,6 +52,8 @@ echo "
     Added sendmail_path to /Applications/MAMP/bin/php/*/php.ini
 ================================================================================
 "
+gem install mailcatcher
+
 find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/local/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
 mailcatcher -b
 sleep 2
