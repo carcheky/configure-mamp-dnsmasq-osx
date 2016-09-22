@@ -30,23 +30,25 @@ echo "
 
 DATE=`date +%Y-%m-%d:%H:%M:%S`
 
-mv /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
-cp /Applications/MAMP/conf/apache/original/httpd.conf /Applications/MAMP/conf/apache/httpd.conf
-echo "
-Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
-" >> /Applications/MAMP/conf/apache/httpd.conf
+if [[ ! -f /Applications/MAMP/conf/apache/httpd.conf.*.backup ]]; then
+  cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
+  echo "
+  Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+  " >> /Applications/MAMP/conf/apache/httpd.conf
+fi
 
-
-mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.${DATE}.backup
-echo "
-<VirtualHost *>
-    UseCanonicalName Off
-    ServerAlias *.%2
-    ServerAlias *.xip.io
-    VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
-</VirtualHost>
-" >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
-subl /Applications/MAMP/conf/apache
+if [[ ! -f /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.*.backup ]]; then
+  mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.${DATE}.backup
+  echo "
+  <VirtualHost *>
+      UseCanonicalName Off
+      ServerAlias *.%2
+      ServerAlias *.xip.io
+      VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
+  </VirtualHost>
+  " >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+  subl /Applications/MAMP/conf/apache
+fi
 
 echo "
 ================================================================================
