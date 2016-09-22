@@ -30,7 +30,8 @@ echo "
 
 DATE=`date +%Y-%m-%d:%H:%M:%S`
 
-cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
+mv /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
+cp /Applications/MAMP/conf/apache/original/httpd.conf /Applications/MAMP/conf/apache/httpd.conf
 echo "
 Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
 " >> /Applications/MAMP/conf/apache/httpd.conf
