@@ -5,8 +5,12 @@ sudo echo "
 ================================================================================"
 sudo rm -fr /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist /etc/resolver/ /usr/local/etc/dnsmasq.conf
 
-
-
+sudo echo "
+================================================================================
+    Unload default apache from system
+      sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+================================================================================"
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 echo "    Install dnsmasq
 ================================================================================
@@ -47,7 +51,6 @@ if [[ ! -f /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.*.backup ]]; t
       VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
   </VirtualHost>
   " >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
-  subl /Applications/MAMP/conf/apache
 fi
 
 echo "
@@ -70,4 +73,4 @@ echo "
 "
 open /Applications/MAMP/
 open /Applications/MAMP/MAMP.app
-sleep 5
+subl /Applications/MAMP/conf/apache
