@@ -1,6 +1,6 @@
-# configure-mamp-dnsmasq-osx
-Configure MAMP after upgrade &amp; reinstall dnsmasq
-(as explained here https://gist.github.com/mgalloway/7121912)
+# Configure MAMP macOS Sierra version 10.12
+¡¡¡SEE CODE BEFORE!!!
+Configure MAMP after upgrade &amp; reinstall dnsmasq or update to macOS Sierra
 
 1. Install MAMP
 2. Open MAMP

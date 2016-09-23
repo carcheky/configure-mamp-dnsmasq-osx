@@ -1,4 +1,38 @@
 #!/bin/bash
+sudo killall httpd mailcatcher
+sudo apachectl stop
+
+sudo echo "
+================================================================================
+    Reinstalling HomeBrew
+================================================================================"
+yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+  sudo chmod 0755 /usr/local
+  sudo chown root:wheel /usr/local
+yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+source ~/.bash_profile
+sudo echo "
+================================================================================
+    Installing Ruby
+================================================================================"
+brew install rbenv ruby-build
+
+# Add rbenv to bash so that it loads every time you open a terminal
+echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+source ~/.bash_profile
+
+# Install Ruby
+rbenv install 2.3.1 -s
+rbenv global 2.3.1
+ruby -v
+
+sudo echo "
+================================================================================
+    Installing Rails
+================================================================================"
+gem install rails -v 4.2.6
+rbenv rehash
+
 sudo echo "
 ================================================================================
     Uninstall dnsmasq
@@ -10,6 +44,7 @@ sudo echo "
     Unload default apache from system
       sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 ================================================================================"
+sudo killall httpd mailcatcher
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 echo "    Install dnsmasq
@@ -32,17 +67,16 @@ echo "
 ================================================================================
 "
 
-DATE=`date +%Y-%m-%d:%H:%M:%S`
+DATE=`date +%Y-%m-%d-%H-%M-%S`
 
-if [[ ! -f /Applications/MAMP/conf/apache/httpd.conf.*.backup ]]; then
-  cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
+if [[ ! -d /Applications/MAMP/conf/apache/backup ]]; then
+  mkdir /Applications/MAMP/conf/apache/backup
+  cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/backup/httpd.conf.${DATE}.backup
   echo "
   Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
   " >> /Applications/MAMP/conf/apache/httpd.conf
-fi
 
-if [[ ! -f /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.*.backup ]]; then
-  mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.${DATE}.backup
+  mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/backup/httpd-vhosts.conf.${DATE}.backup
   echo "
   <VirtualHost *>
       UseCanonicalName Off
@@ -72,5 +106,9 @@ echo "
 ================================================================================
 "
 open /Applications/MAMP/
-open /Applications/MAMP/MAMP.app
+open /Applications/MAMP/conf/apache
+sleep 2
 subl /Applications/MAMP/conf/apache
+sleep 2
+open /Applications/MAMP/MAMP.app
+open /Applications/MAMP\ No\ Password.app/
