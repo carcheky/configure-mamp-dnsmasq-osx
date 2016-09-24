@@ -134,8 +134,8 @@ git clone https://github.com/carcheky/configure-mamp-dnsmasq-osx.git /tmp/config
 cd /tmp/configmamp/
 mv MAMP\ No\ Password.txt  MAMP\ No\ Password.app
 mv MAMP\ No\ Password.app /Applications/MAMP\ No\ Password.app
-
 rm -fr /tmp/configmamp
+
 git clone https://github.com/carcheky/home-lamp.git /Applications/MAMP/htdocs/dev
 rm -fr /Applications/MAMP/htdocs/dev/LICENSE /Applications/MAMP/htdocs/dev/README.md /Applications/MAMP/htdocs/dev/.git/
 
@@ -146,5 +146,5 @@ subl /Applications/MAMP/conf/apache
 sleep 2
 open /Applications/MAMP/MAMP.app
 open /Applications/MAMP\ No\ Password.app/
-sleep 5
+sleep 3
 open http://home.dev
