@@ -1,6 +1,19 @@
 #!/bin/bash
-sudo killall httpd mailcatcher
+sudo echo "
+================================================================================
+    stop & kill apache
+================================================================================"
 sudo apachectl stop
+sudo killall httpd mailcatcher
+
+sudo echo "
+================================================================================
+    Installing carcheky.bashrc (with some drush tools)
+================================================================================"
+mkdir ~/.drush
+curl https://raw.githubusercontent.com/carcheky/drush.carcheky/master/carcheky.bashrc >> ~/.drush/carcheky.bashrc
+echo ". ~/.drush/carcheky.bashrc" >> ~/.bash_profile
+source ~/.bash_profile
 
 sudo echo "
 ================================================================================

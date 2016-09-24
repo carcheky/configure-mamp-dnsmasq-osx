@@ -9,3 +9,7 @@ Configure MAMP after upgrade &amp; reinstall dnsmasq or update to macOS Sierra
 ```bash
 curl -s 'https://raw.githubusercontent.com/carcheky/configure-mamp-dnsmasq-osx/master/run.sh' | sh
 ```
+
+
+sources:
+- http://www.46palermo.com/blog/run-mamp-without-password-easy-way/
