@@ -15,6 +15,9 @@ curl https://raw.githubusercontent.com/carcheky/drush.carcheky/master/carcheky.b
 echo ". ~/.drush/carcheky.bashrc" >> ~/.bash_profile
 source ~/.bash_profile
 
+cd ~/Downloads
+curl -O https://github.com/carcheky/configure-mamp-dnsmasq-osx/raw/master/MAMPNoPassword.zip
+unzip MAMPNoPassword.zip
 sudo echo "
 ================================================================================
     Reinstalling HomeBrew
