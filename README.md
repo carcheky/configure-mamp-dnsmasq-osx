@@ -13,3 +13,10 @@ curl -s 'https://raw.githubusercontent.com/carcheky/configure-mamp-dnsmasq-osx/m
 
 sources:
 - http://www.46palermo.com/blog/run-mamp-without-password-easy-way/
+
+
+silent install mamp after download:
+
+```bash
+sudo installer -verbose -pkg ~/Downloads/MAMP_MAMP_PRO_4.0.4.pkg -target /Volumes/Macintosh\ HD
+```
