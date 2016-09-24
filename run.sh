@@ -1,6 +1,18 @@
 #!/bin/bash
 sudo echo "
 ================================================================================
+    Installing composer & drush
+================================================================================"
+sudo php -r "copy('http://getcomposer.org/installer', 'composer-setup.php');"
+sudo php composer-setup.php
+sudo php -r "unlink('composer-setup.php');"
+sudo mv composer.phar /usr/local/bin/composer
+composer -V
+composer global require drush/drush
+composer global update
+
+sudo echo "
+================================================================================
     stop & kill apache
 ================================================================================"
 sudo apachectl stop
@@ -20,8 +32,8 @@ sudo echo "
     Reinstalling HomeBrew
 ================================================================================"
 yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
-  sudo chmod 0755 /usr/local
-  sudo chown root:wheel /usr/local
+sudo chmod 0755 /usr/local
+sudo chown root:wheel /usr/local
 yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 source ~/.bash_profile
 sudo echo "
@@ -90,14 +102,12 @@ if [[ ! -d /Applications/MAMP/conf/apache/backup ]]; then
   " >> /Applications/MAMP/conf/apache/httpd.conf
 
   mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/backup/httpd-vhosts.conf.${DATE}.backup
-  echo "
-  <VirtualHost *>
-      UseCanonicalName Off
-      ServerAlias *.%2
-      ServerAlias *.xip.io
-      VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
-  </VirtualHost>
-  " >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+  echo "<VirtualHost *>
+    UseCanonicalName Off
+    ServerAlias *.%2
+    ServerAlias *.xip.io
+    VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
+</VirtualHost>" >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
 fi
 
 echo "
@@ -115,7 +125,7 @@ php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
 
 echo "
 ================================================================================
-    Starting MAMP
+    Starting MAMP & MAMP No Password & home.dev
 ================================================================================
 "
 rm -fr /tmp/configmamp
