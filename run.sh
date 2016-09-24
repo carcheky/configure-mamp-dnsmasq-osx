@@ -10,7 +10,8 @@ sudo mv composer.phar /usr/local/bin/composer
 composer -V
 composer global require drush/drush
 composer global update
-
+sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/
+drush
 sudo echo "
 ================================================================================
     stop & kill apache
