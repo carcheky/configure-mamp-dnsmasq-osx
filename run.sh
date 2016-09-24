@@ -121,9 +121,13 @@ echo "
     Starting MAMP
 ================================================================================
 "
+rm -fr /tmp/configmamp
 git clone https://github.com/carcheky/configure-mamp-dnsmasq-osx.git /tmp/configmamp
 cd /tmp/configmamp/
-mv mampnopass/  MAMP\ No\ Password.app
+mv MAMP\ No\ Password.txt  MAMP\ No\ Password.app
+mv MAMP\ No\ Password.app /Applications/MAMP\ No\ Password.app
+
+
 open /Applications/MAMP/
 open /Applications/MAMP/conf/apache
 sleep 2
