@@ -127,6 +127,10 @@ cd /tmp/configmamp/
 mv MAMP\ No\ Password.txt  MAMP\ No\ Password.app
 mv MAMP\ No\ Password.app /Applications/MAMP\ No\ Password.app
 
+rm -fr /tmp/configmamp
+git clone https://github.com/carcheky/home-lamp.git /Applications/MAMP/htdocs/dev
+rm -fr /Applications/MAMP/htdocs/dev/LICENSE /Applications/MAMP/htdocs/dev/README.md /Applications/MAMP/htdocs/dev/.git/
+open http://home.dev
 
 open /Applications/MAMP/
 open /Applications/MAMP/conf/apache
