@@ -139,6 +139,9 @@ rm -fr /tmp/configmamp
 git clone https://github.com/carcheky/home-lamp.git /Applications/MAMP/htdocs/dev
 rm -fr /Applications/MAMP/htdocs/dev/LICENSE /Applications/MAMP/htdocs/dev/README.md /Applications/MAMP/htdocs/dev/.git/
 
+sudo ln -s /Applications/MAMP/Library/bin/mysql /usr/local/bin/mysql
+sudo ln -s /Applications/MAMP/Library/bin/mysqldump /usr/local/bin/mysqldump
+
 open /Applications/MAMP/
 open /Applications/MAMP/conf/apache
 sleep 2
