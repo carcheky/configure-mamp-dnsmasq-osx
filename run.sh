@@ -130,18 +130,18 @@ echo "
     Starting MAMP & MAMP No Password & home.dev
 ================================================================================
 "
-rm -fr /tmp/configmamp
+sudo rm -fr /tmp/configmamp
 git clone https://github.com/carcheky/configure-mamp-dnsmasq-osx.git /tmp/configmamp
 cd /tmp/configmamp/
 mv MAMP\ No\ Password.txt  MAMP\ No\ Password.app
-rm -fr /Applications/MAMP\ No\ Password.app
+sudo rm -fr /Applications/MAMP\ No\ Password.app
 mv MAMP\ No\ Password.app /Applications/MAMP\ No\ Password.app
 
 if [[ ! -d /Applications/MAMP/htdocs/dev/home ]]; then
   mkdir -p /Applications/MAMP/htdocs/dev/
   git clone https://github.com/carcheky/home-lamp.git /tmp/hometmp
   mv /tmp/hometmp/home/ /Applications/MAMP/htdocs/dev/
-  rm -fr /tmp/hometmp
+  sudo rm -fr /tmp/hometmp
 fi
 
 sudo rm /usr/local/bin/mysql
