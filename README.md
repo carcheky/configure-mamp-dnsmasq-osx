@@ -18,5 +18,5 @@ sources:
 silent install mamp after download:
 
 ```bash
-sudo installer -verbose -pkg ~/Downloads/MAMP_MAMP_PRO_4.0.5.pkg -target / ; rm -fr /Applications/MAMP\ PRO/
+sudo installer -verbose -pkg MAMP_MAMP_PRO_4.0.5.pkg -target / ; rm -fr /Applications/MAMP\ PRO/
 ```
