@@ -143,6 +143,8 @@ if [[ ! -d /Applications/MAMP/htdocs/dev/home ]]; then
   rm -fr /tmp/hometmp
 fi
 
+sudo rm /usr/local/bin/mysql
+sudo rm /usr/local/bin/mysqldump
 sudo ln -s /Applications/MAMP/Library/bin/mysql /usr/local/bin/mysql
 sudo ln -s /Applications/MAMP/Library/bin/mysqldump /usr/local/bin/mysqldump
 
