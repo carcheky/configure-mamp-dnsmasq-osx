@@ -10,6 +10,7 @@ sudo mv composer.phar /usr/local/bin/composer
 composer -V
 composer global require drush/drush:6.7
 composer global update
+rm -fr /usr/bin/drush
 sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/
 drush
 sudo echo "
