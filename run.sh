@@ -8,7 +8,7 @@ sudo php composer-setup.php
 sudo php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 composer -V
-composer global require drush/drush:6.7
+composer global require drush/drush
 composer global update
 sudo rm -fr /usr/bin/drush
 sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/
@@ -74,7 +74,7 @@ sudo echo "
 sudo killall httpd mailcatcher
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
-echo "    Install dnsmasq
+echo "    Installing dnsmasq
 ================================================================================
 "
 brew install dnsmasq
@@ -98,12 +98,12 @@ DATE=`date +%Y-%m-%d-%H-%M-%S`
 
 if [[ ! -d /Applications/MAMP/conf/apache/backup ]]; then
   mkdir /Applications/MAMP/conf/apache/backup
-  cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/backup/httpd.conf.${DATE}.backup
+  cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
   echo "
   Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
   " >> /Applications/MAMP/conf/apache/httpd.conf
 
-  mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/backup/httpd-vhosts.conf.${DATE}.backup
+  mv /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf.${DATE}.backup
   echo "<VirtualHost *>
     UseCanonicalName Off
     ServerAlias *.%2
