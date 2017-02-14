@@ -1,4 +1,5 @@
 #!/bin/bash
+@echo off
 sudo echo "
 ================================================================================
     Installing composer & drush
