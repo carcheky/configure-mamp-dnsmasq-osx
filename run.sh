@@ -137,10 +137,10 @@ mv MAMP\ No\ Password.txt  MAMP\ No\ Password.app
 sudo rm -fr /Applications/MAMP\ No\ Password.app
 mv MAMP\ No\ Password.app /Applications/MAMP\ No\ Password.app
 
-if [[ ! -d /Applications/MAMP/htdocs/dev/home ]]; then
-  mkdir -p /Applications/MAMP/htdocs/dev/
+if [[ ! -d /Applications/MAMP/htdocs/home ]]; then
+  mkdir -p /Applications/MAMP/htdocs/
   git clone https://github.com/carcheky/home-lamp.git /tmp/hometmp
-  mv /tmp/hometmp/home/ /Applications/MAMP/htdocs/dev/
+  mv /tmp/hometmp/home/ /Applications/MAMP/htdocs/
   sudo rm -fr /tmp/hometmp
 fi
 
@@ -149,12 +149,12 @@ sudo rm /usr/local/bin/mysqldump
 sudo ln -s /Applications/MAMP/Library/bin/mysql /usr/local/bin/mysql
 sudo ln -s /Applications/MAMP/Library/bin/mysqldump /usr/local/bin/mysqldump
 
-# open /Applications/MAMP/
-# open /Applications/MAMP/conf/apache
+open /Applications/MAMP/
+open /Applications/MAMP/conf/apache
 sleep 2
-# subl /Applications/MAMP/conf/apache
+subl /Applications/MAMP/conf/apache
 sleep 2
-# open /Applications/MAMP/MAMP.app
-# open /Applications/MAMP\ No\ Password.app/
+open /Applications/MAMP/MAMP.app
+open /Applications/MAMP\ No\ Password.app/
 sleep 3
-# open http://home.dev
+open http://home.dev
