@@ -1,4 +1,5 @@
 # Configure MAMP macOS Sierra version 10.12
+¡¡¡NOT WORKING!!!!
 ¡¡¡SEE CODE BEFORE!!!
 Configure MAMP after upgrade &amp; reinstall dnsmasq or update to macOS Sierra
 
@@ -18,5 +19,5 @@ sources:
 silent install mamp after download:
 
 ```bash
-sudo installer -verbose -pkg MAMP_MAMP_PRO_4.0.5.pkg -target / ; rm -fr /Applications/MAMP\ PRO/
+sudo installer -verbose -pkg MAMP_MAMP_PRO_*.pkg -target / ; rm -fr /Applications/MAMP\ PRO/
 ```

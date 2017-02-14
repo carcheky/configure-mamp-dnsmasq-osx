@@ -34,10 +34,10 @@ sudo echo "
 ================================================================================
     Reinstalling HomeBrew
 ================================================================================"
-yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+# yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
 sudo chmod 0755 /usr/local
 sudo chown root:wheel /usr/local
-yes | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 source ~/.bash_profile
 sudo echo "
 ================================================================================
@@ -97,8 +97,7 @@ echo "
 
 DATE=`date +%Y-%m-%d-%H-%M-%S`
 
-if [[ ! -d /Applications/MAMP/conf/apache/backup ]]; then
-  mkdir /Applications/MAMP/conf/apache/backup
+if [[ ! -f /Applications/MAMP/conf/apache/*.backup ]]; then
   cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
   echo "
   Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
@@ -109,7 +108,7 @@ if [[ ! -d /Applications/MAMP/conf/apache/backup ]]; then
     UseCanonicalName Off
     ServerAlias *.%2
     ServerAlias *.xip.io
-    VirtualDocumentRoot /Applications/MAMP/htdocs/%2/%1
+    VirtualDocumentRoot /Applications/MAMP/htdocs/%1
 </VirtualHost>" >> /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
 fi
 
