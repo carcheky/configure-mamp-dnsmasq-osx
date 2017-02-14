@@ -115,7 +115,7 @@ fi
 
 echo "
 ================================================================================
-    Added sendmail_path to /Applications/MAMP/bin/php/*/php.ini
+    Added sendmail_path to /Applications/MAMP/bin/php/php.X.X.X/php.ini
 ================================================================================
 "
 sudo gem install mailcatcher
