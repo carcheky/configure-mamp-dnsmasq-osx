@@ -1,11 +1,11 @@
-if [[ -f MAMP_MAMP_PRO_4.1.1.pkg ]]; then
-sudo echo "
-================================================================================
-    Installing MAMP
-================================================================================"
-  FILE=MAMP_MAMP_PRO_4.1.1.pkg
-  sudo installer -allowUntrusted -verboseR -pkg "$FILE" -target / -lang en 2>&1
-fi
+# if [[ -f MAMP_MAMP_PRO_4.1.1.pkg ]]; then
+# sudo echo "
+# ================================================================================
+#     Installing MAMP
+# ================================================================================"
+#   FILE=MAMP_MAMP_PRO_4.1.1.pkg
+#   sudo installer -allowUntrusted -verboseR -pkg "$FILE" -target / -lang en 2>&1
+# fi
 
 sudo echo "
 ================================================================================
