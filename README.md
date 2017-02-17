@@ -8,7 +8,7 @@ Configure MAMP after upgrade &amp; reinstall dnsmasq or update to macOS Sierra
 3. Save prefs MAMP (PHP Standard Version, Set Web & MySQL ports to 80 & 3306)
 4. Copy & Paste in terminal
 ```bash
-curl -s 'https://raw.githubusercontent.com/carcheky/configure-mamp-dnsmasq-osx/master/run.sh' | sh
+curl -s 'https://raw.githubusercontent.com/carcheky/configure-mamp-dnsmasq-osx/master/install-all.sh' | sh
 ```
 
 
