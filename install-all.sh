@@ -3,7 +3,8 @@ sudo echo "
 ================================================================================
     Installing MAMP
 ================================================================================"
-  sudo installer -verboseR -pkg MAMP_MAMP_PRO_4.1.1.pkg
+  FILE=MAMP_MAMP_PRO_4.1.1.pkg
+  sudo installer -allowUntrusted -verboseR -pkg "$FILE" -target / -lang en 2>&1
 fi
 
 sudo echo "
