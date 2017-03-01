@@ -29,21 +29,6 @@ sudo mv drush /usr/local/bin
 # Optional. Enrich the bash startup file with completion and aliases.
 yes | drush init
 
-echo "
-# Include Drush completion.
-  . ~/.drush/drush.complete.sh
-
-# Include Drush prompt customizations.
-  . ~/.drush/drush.prompt.sh
-
-# Include Drush bash customizations.
-  . ~/.drush/drush.bashrc
-" >> ~/.bash_profile
-
-#copy ~/.bashrc to ~/bash_profile in MAC
-# cat ~/.bashrc >> ~/.bash_profile
-rm ~/.bashrc
-
 
 # read -n1 -r -p "Press space to continue..." key
 sudo echo "
@@ -207,4 +192,24 @@ mailcatcher -b
 sleep 2
 php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
 
+
+echo "
+================================================================================
+    Added drush scripts to bash_profile
+================================================================================
+"
+echo "
+# Include Drush completion.
+  . ~/.drush/drush.complete.sh
+
+# Include Drush prompt customizations.
+  . ~/.drush/drush.prompt.sh
+
+# Include Drush bash customizations.
+  . ~/.drush/drush.bashrc
+" >> ~/.bash_profile
+
+#copy ~/.bashrc to ~/bash_profile in MAC
+# cat ~/.bashrc >> ~/.bash_profile
+rm ~/.bashrc
 source ~/.bash_profile

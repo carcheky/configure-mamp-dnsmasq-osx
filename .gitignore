@@ -6,3 +6,5 @@ test.sh
 composer-setup\.php
 
 composer-temp\.phar
+
+drush
