@@ -27,7 +27,6 @@ sudo echo "
 ================================================================================"
 composer global require drush/drush
 sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/drush
-source ~/.bash_profile
 yes|drush init
 echo " " >> ~/.bash_profile
 cat ~/.bashrc >> ~/.bash_profile
@@ -193,8 +192,8 @@ echo "
     FINISHING.... starting MAMP
 ================================================================================
 "
-# sudo /Applications/MAMP/Library/bin/apachectl start
-# /Applications/MAMP/Library/bin/mysqld_safe --port=3306 --socket=/Applications/MAMP/tmp/mysql/mysql.sock --pid-file=/Applications/MAMP/tmp/mysql/mysql.pid --log-error=/Applications/MAMP/logs/mysql_error_log &
+sudo /Applications/MAMP/Library/bin/apachectl start
+/Applications/MAMP/Library/bin/mysqld_safe --port=3306 --socket=/Applications/MAMP/tmp/mysql/mysql.sock --pid-file=/Applications/MAMP/tmp/mysql/mysql.pid --log-error=/Applications/MAMP/logs/mysql_error_log &
 
 open /Applications/MAMP/MAMP.app
 sleep 3
@@ -210,7 +209,7 @@ echo "
 "
 sudo gem install mailcatcher
 
-find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/local/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
+find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
 mailcatcher -b
 sleep 2
 php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
