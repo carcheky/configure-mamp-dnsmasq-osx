@@ -6,7 +6,8 @@ echo "
 sudo rm ~/.bash_profile
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Installing composer
@@ -18,7 +19,8 @@ php -r "unlink('composer-setup.php');"
 rm composer.phar
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 # clear
 rm /usr/local/bin/drush
 rm -fr ~/.drush
@@ -38,7 +40,8 @@ sudo mv drush /usr/local/bin
 yes | drush init
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Installing carcheky.bashrc (with some drush tools)
@@ -53,7 +56,8 @@ fi
 source ~/.bash_profile
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     stop & kill apache
@@ -62,7 +66,8 @@ sudo apachectl stop
 sudo killall httpd mailcatcher
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Reinstalling HomeBrew
@@ -71,7 +76,8 @@ yes|/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 source ~/.bash_profile
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Installing Ruby
@@ -80,7 +86,8 @@ brew install ruby
 brew install ruby-build
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Installing Rails
@@ -89,7 +96,8 @@ yes|sudo gem install rails -v 2.2.2
 sudo rbenv rehash
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Uninstall dnsmasq
@@ -98,7 +106,8 @@ sudo rm -fr /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist /etc/resolver/ /u
 echo "sudo rm -fr /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist /etc/resolver/ /usr/local/etc/dnsmasq.conf"
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 sudo echo "
 ================================================================================
     Unload default apache from system
@@ -108,7 +117,8 @@ sudo killall httpd mailcatcher
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     Installing dnsmasq
@@ -123,7 +133,8 @@ sudo mkdir -v /etc/resolver
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     Install MAMP No Password
@@ -137,7 +148,8 @@ sudo rm -fr /Applications/MAMP\ No\ Password.app
 mv MAMP\ No\ Password.app /Applications/MAMP\ No\ Password.app
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     Install home.dev
@@ -154,7 +166,8 @@ mkdir /Applications/MAMP/bin/php/other
 mv /Applications/MAMP/bin/php/php7* /Applications/MAMP/bin/php/other
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     Configure MAMP
@@ -177,7 +190,8 @@ if [[ ! -f /Applications/MAMP/conf/apache/*.backup ]]; then
 fi
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     FINISHING.... starting MAMP
@@ -191,7 +205,8 @@ sleep 3
 open http://home.dev
 
 
-read -n1 -r -p "Press space to continue..." key; clear;
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     Added sendmail_path to /Applications/MAMP/bin/php/php.X.X.X/php.ini
