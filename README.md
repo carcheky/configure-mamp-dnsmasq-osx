@@ -12,18 +12,9 @@ Configure MAMP after upgrade &amp; reinstall dnsmasq or update to macOS Sierra
 chmod +x install-all.sh
 ./install-all.sh
 ```
-)
-```bash
-curl -s 'https://raw.githubusercontent.com/carcheky/configure-mamp-dnsmasq-osx/master/install-all.sh' | sh
-```
+
 
 
 sources:
 - http://www.46palermo.com/blog/run-mamp-without-password-easy-way/
 
-
-silent install mamp after download:
-
-```bash
-sudo installer -verbose -pkg MAMP_MAMP_PRO_*.pkg -target / ; rm -fr /Applications/MAMP\ PRO/
-```
