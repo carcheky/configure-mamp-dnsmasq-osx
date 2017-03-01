@@ -21,12 +21,15 @@ sudo rm /usr/bin/drush
 sudo rm -fr ~/.drush
 sudo echo "
 ================================================================================
-     nstalling drush
+     Installing drush
 ================================================================================"
 composer global require drush/drush
 sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/drush
 source ~/.bash_profile
-drush
+yes|drush init
+cat ~/.bashrc >> ~/.bash_profile
+rm ~/.bashrc
+source ~/.bash_profile
 drush version
 
 
