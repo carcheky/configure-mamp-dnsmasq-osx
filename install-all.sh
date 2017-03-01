@@ -12,32 +12,22 @@ sudo echo "
 ================================================================================
     Installing composer
 ================================================================================"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('SHA384', 'composer-setup.php') === '55d6ead61b29c7bdee5cccfb50076874187bd9f21f65d8991d46ec5cc90518f447387fb9f76ebae1fbbacf329e583e30') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-rm composer.phar
-
-
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
 read -n1 -r -p "Press space to continue..." key
 clear
-# clear
-rm /usr/local/bin/drush
-rm -fr ~/.drush
+sudo rm /usr/local/bin/drush
+sudo rm /usr/bin/drush
+sudo rm -fr ~/.drush
 sudo echo "
 ================================================================================
-    Installing drush
+     nstalling drush
 ================================================================================"
-# Download latest stable release using the code below or browse to github.com/drush-ops/drush/releases.
-yes | php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > drush
-# Or use our upcoming release: php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush-unstable.phar');" > drush
-# Test your install.
-yes | php drush core-status
-# Make `drush` executable as a command from anywhere. Destination can be anywhere on $PATH.
-chmod +x drush
-sudo mv drush /usr/local/bin
-# Optional. Enrich the bash startup file with completion and aliases.
-yes | drush init
+composer global require drush/drush
+sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/drush
+source ~/.bash_profile
+drush
+drush version
 
 
 read -n1 -r -p "Press space to continue..." key
