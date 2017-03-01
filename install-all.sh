@@ -161,8 +161,10 @@ mkdir /Applications/MAMP/bin/php/other
 mv /Applications/MAMP/bin/php/php7* /Applications/MAMP/bin/php/other
 
 
-# read -n1 -r -p "Press space to continue..." key
-# clear
+open /Applications/MAMP/MAMP.app
+
+read -n1 -r -p "Press space to continue..." key
+clear
 echo "
 ================================================================================
     Configure MAMP
@@ -195,10 +197,9 @@ echo "
 sudo /Applications/MAMP/Library/bin/apachectl start
 /Applications/MAMP/Library/bin/mysqld_safe --port=3306 --socket=/Applications/MAMP/tmp/mysql/mysql.sock --pid-file=/Applications/MAMP/tmp/mysql/mysql.pid --log-error=/Applications/MAMP/logs/mysql_error_log &
 
-open /Applications/MAMP/MAMP.app
-sleep 3
 open http://home.dev
 
+sleep 5
 
 # read -n1 -r -p "Press space to continue..." key
 # clear
