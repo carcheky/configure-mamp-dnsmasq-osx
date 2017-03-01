@@ -34,7 +34,7 @@ cat ~/.bashrc >> ~/.bash_profile
 rm ~/.bashrc
 source ~/.bash_profile
 drush version
-
+drush dl drush_language
 
 # read -n1 -r -p "Press space to continue..." key
 # clear
