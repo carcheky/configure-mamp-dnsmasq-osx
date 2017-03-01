@@ -14,6 +14,8 @@ sudo echo "
 ================================================================================"
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
+
+
 read -n1 -r -p "Press space to continue..." key
 clear
 sudo rm /usr/local/bin/drush
@@ -27,6 +29,7 @@ composer global require drush/drush
 sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/drush
 source ~/.bash_profile
 yes|drush init
+echo " " >> ~/.bash_profile
 cat ~/.bashrc >> ~/.bash_profile
 rm ~/.bashrc
 source ~/.bash_profile
