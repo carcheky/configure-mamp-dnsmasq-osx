@@ -1,9 +1,21 @@
+DATE=`date +%Y-%m-%d-%H-%M-%S`
 clear
 echo "
 ================================================================================
     Pidiendo sudo
 ================================================================================"
-sudo rm ~/.bash_profile
+sudo mv ~/.bash_profile ~/.bash_profile.${DATE}.backup
+
+
+# read -n1 -r -p "Press space to continue..." key
+# clear
+sudo echo "
+================================================================================
+    Unload default apache from system
+      sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+================================================================================"
+sudo killall httpd mailcatcher mysqld MAMP MAMP\ No\ Password
+sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 
 # read -n1 -r -p "Press space to continue..." key
@@ -18,9 +30,9 @@ sudo mv composer.phar /usr/local/bin/composer
 
 # read -n1 -r -p "Press space to continue..." key
 # clear
-sudo rm /usr/local/bin/drush
-sudo rm /usr/bin/drush
-sudo rm -fr ~/.drush
+sudo mv /usr/local/bin/drush /usr/local/bin/drush.${DATE}.backup
+sudo mv /usr/bin/drush /usr/bin/drush.${DATE}.backup
+sudo mv ~/.drush ~/.drush.${DATE}.backup
 sudo echo "
 ================================================================================
      Installing drush
@@ -97,19 +109,8 @@ sudo echo "
 ================================================================================
     Uninstall dnsmasq
 ================================================================================"
-sudo rm -fr /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist /etc/resolver/ /usr/local/etc/dnsmasq.conf
 echo "sudo rm -fr /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist /etc/resolver/ /usr/local/etc/dnsmasq.conf"
-
-
-# read -n1 -r -p "Press space to continue..." key
-# clear
-sudo echo "
-================================================================================
-    Unload default apache from system
-      sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
-================================================================================"
-sudo killall httpd mailcatcher
-sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+sudo rm -fr /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist /etc/resolver/ /usr/local/etc/dnsmasq.conf
 
 
 # read -n1 -r -p "Press space to continue..." key
@@ -170,7 +171,6 @@ echo "
     Configure MAMP
 ================================================================================
 "
-DATE=`date +%Y-%m-%d-%H-%M-%S`
 if [[ ! -f /Applications/MAMP/conf/apache/*.backup ]]; then
   cp /Applications/MAMP/conf/apache/httpd.conf /Applications/MAMP/conf/apache/httpd.conf.${DATE}.backup
   echo "
@@ -210,6 +210,7 @@ echo "
 "
 sudo gem install mailcatcher
 
+find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'cp php.ini php.ini.${DATE}.backup' \;
 find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
 mailcatcher -b
 sleep 2
