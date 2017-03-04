@@ -45,7 +45,8 @@ cat ~/.bashrc >> ~/.bash_profile
 rm ~/.bashrc
 source ~/.bash_profile
 drush version
-drush dl drush_language
+drush dl drush_language -y
+curl https://raw.githubusercontent.com/carcheky/drush.carcheky/master/drushrc.php.example >> ~/.drush/drushrc.php
 
 # read -n1 -r -p "Press space to continue..." key
 # clear
