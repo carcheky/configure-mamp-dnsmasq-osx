@@ -47,6 +47,8 @@ source ~/.bash_profile
 drush version
 drush dl drush_language -y
 curl https://raw.githubusercontent.com/carcheky/drush.carcheky/master/drushrc.php.example >> ~/.drush/drushrc.php
+drush dl drush_entity -y
+
 
 # read -n1 -r -p "Press space to continue..." key
 # clear
