@@ -14,7 +14,7 @@ sudo echo "
     Unload default apache from system
       sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 ================================================================================"
-sudo killall httpd mailcatcher mysqld MAMP MAMP\ No\ Password
+sudo killall httpd mysqld ruby MAMP MAMP\ No\ Password
 sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
 
 
@@ -64,16 +64,6 @@ if [[ ~/.drush/carcheky.bashrc ]]; then
 fi
 " >> ~/.bash_profile
 source ~/.bash_profile
-
-
-# read -n1 -r -p "Press space to continue..." key
-# clear
-sudo echo "
-================================================================================
-    stop & kill apache
-================================================================================"
-sudo apachectl stop
-sudo killall httpd mailcatcher
 
 
 # read -n1 -r -p "Press space to continue..." key
@@ -194,32 +184,34 @@ fi
 # clear
 echo "
 ================================================================================
+    Adding sendmail_path to /Applications/MAMP/bin/php/php.X.X.X/php.ini
+================================================================================
+"
+sudo gem install mailcatcher
+sudo gem pristine bigdecimal --version 1.2.7
+sudo gem pristine eventmachine --version 1.0.8
+sudo gem pristine ffi --version 1.9.10
+
+sudo killall ruby
+
+
+find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
+mailcatcher -b
+sleep 5
+php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
+
+
+# read -n1 -r -p "Press space to continue..." key
+# clear
+echo "
+================================================================================
     FINISHING.... starting MAMP
 ================================================================================
 "
 sudo /Applications/MAMP/Library/bin/apachectl start
 /Applications/MAMP/Library/bin/mysqld_safe --port=3306 --socket=/Applications/MAMP/tmp/mysql/mysql.sock --pid-file=/Applications/MAMP/tmp/mysql/mysql.pid --log-error=/Applications/MAMP/logs/mysql_error_log &
 
+
 open http://home.dev
-
-sleep 5
-
-# read -n1 -r -p "Press space to continue..." key
-# clear
-echo "
-================================================================================
-    Added sendmail_path to /Applications/MAMP/bin/php/php.X.X.X/php.ini
-================================================================================
-"
-sudo gem install mailcatcher
-
-find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'cp php.ini php.ini.${DATE}.backup' \;
-find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
-mailcatcher -b
-sleep 2
-php -r "mail('test@test.test', 'testing mailcatcher', 'testing mailcatcher');"
-
-
-
 
 source ~/.bash_profile
