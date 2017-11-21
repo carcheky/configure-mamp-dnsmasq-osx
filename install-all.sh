@@ -4,7 +4,12 @@ echo "
 ================================================================================
     Pidiendo sudo
 ================================================================================"
-sudo mv ~/.bash_profile ~/.bash_profile.${DATE}.backup
+if [[ ! -d ~/.drush_backups/${DATE} ]]; then
+  mkdir -p ~/.drush_backups/${DATE}
+fi
+open /Applications/Utilities/Terminal.app
+
+sudo mv ~/.bash_profile ~/.drush_backups/${DATE}/.bash_profile.${DATE}.backup
 
 
 # read -n1 -r -p "Press space to continue..." key
@@ -28,16 +33,31 @@ curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 
+
 # read -n1 -r -p "Press space to continue..." key
 # clear
-sudo mv /usr/local/bin/drush /usr/local/bin/drush.${DATE}.backup
-sudo mv /usr/bin/drush /usr/bin/drush.${DATE}.backup
-sudo mv ~/.drush ~/.drush.${DATE}.backup
+if [[ -f /usr/local/bin/drush ]]; then
+  sudo cp /usr/local/bin/drush  ~/.drush_backups/${DATE}/drush.${DATE}.backup
+  sudo rm /usr/local/bin/drush
+fi
+if [[ -f /usr/bin/drush ]]; then
+  sudo cp /usr/bin/drush  ~/.drush_backups/${DATE}/drush.${DATE}.backup
+  sudo rm /usr/bin/drush
+fi
+
+if [[ -d ~/.drush ]]; then
+  sudo mv ~/.drush ~/.drush_backups/${DATE}/.drush.${DATE}.backup
+fi
+open ~/.drush_backups/${DATE}
+open /Applications/Utilities/Terminal.app
+
 sudo echo "
 ================================================================================
      Installing drush
 ================================================================================"
 composer global require drush/drush
+open /Applications/Utilities/Terminal.app
+echo "Introduzca su contraseña para continuar:"
 sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/drush
 yes|drush init
 echo " " >> ~/.bash_profile
@@ -56,7 +76,9 @@ sudo echo "
 ================================================================================
     Installing carcheky.bashrc (with some drush tools)
 ================================================================================"
-mkdir ~/.drush
+if [[ ! -d ~/.drush ]]; then
+  mkdir ~/.drush
+fi
 curl https://raw.githubusercontent.com/carcheky/drush.carcheky/master/carcheky.bashrc >> ~/.drush/carcheky.bashrc
 echo "
 if [[ ~/.drush/carcheky.bashrc ]]; then
@@ -118,9 +140,11 @@ mkdir -pv $(brew --prefix)/etc/
 echo 'address=/.dev/127.0.0.1' > $(brew --prefix)/etc/dnsmasq.conf
 sudo cp -v $(brew --prefix dnsmasq)/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
 sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-sudo mkdir -v /etc/resolver
+if [[ ! -d /etc/resolver ]]; then
+  sudo mkdir -v /etc/resolver
+fi
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
-
+brew upgrade dnsmasq
 
 # read -n1 -r -p "Press space to continue..." key
 # clear
@@ -145,19 +169,26 @@ echo "
 ================================================================================
 "
 if [[ ! -d /Applications/MAMP/htdocs/home ]]; then
-  mkdir -p /Applications/MAMP/htdocs/
+  if [[ ! -d /Applications/MAMP/htdocs/ ]]; then
+    mkdir -p /Applications/MAMP/htdocs/
+  fi
   git clone https://github.com/carcheky/home-lamp.git /tmp/hometmp
   mv /tmp/hometmp/home/ /Applications/MAMP/htdocs/
   sudo rm -fr /tmp/hometmp
 fi
 
-mkdir /Applications/MAMP/bin/php/other
+if [[ ! -d /Applications/MAMP/bin/php/other ]]; then
+  mkdir /Applications/MAMP/bin/php/other
+fi
 mv /Applications/MAMP/bin/php/php7* /Applications/MAMP/bin/php/other
 
 
 open /Applications/MAMP/MAMP.app
+open /Applications/Utilities/Terminal.app
+echo "Configura MAMP (Puertos, versión PHP)"
+read  -t 60 -p "Pulsa enter para continuar (si no hace nada, en 60 segundos el proceso continuará solo" key
 
-read -n1 -r -p "Press space to continue..." key
+
 clear
 echo "
 ================================================================================
@@ -188,12 +219,13 @@ echo "
 ================================================================================
 "
 sudo gem install mailcatcher
-sudo gem pristine bigdecimal --version 1.2.7
-sudo gem pristine eventmachine --version 1.0.8
-sudo gem pristine ffi --version 1.9.10
+# sudo gem pristine bigdecimal --version 1.2.7
+# sudo gem pristine eventmachine --version 1.0.8
+# sudo gem pristine ffi --version 1.9.10
 
 sudo killall ruby
 
+open /Applications/Utilities/Terminal.app
 
 find /Applications/MAMP/bin/php -name php.ini -exec sh -c 'echo "sendmail_path = /usr/bin/catchmail -f catcher@mailcatcher.me" >> {}' \;
 mailcatcher -b
@@ -208,9 +240,15 @@ echo "
     FINISHING.... starting MAMP
 ================================================================================
 "
-sudo /Applications/MAMP/Library/bin/apachectl start
-/Applications/MAMP/Library/bin/mysqld_safe --port=3306 --socket=/Applications/MAMP/tmp/mysql/mysql.sock --pid-file=/Applications/MAMP/tmp/mysql/mysql.pid --log-error=/Applications/MAMP/logs/mysql_error_log &
+# sudo /Applications/MAMP/Library/bin/apachectl start
+# /Applications/MAMP/Library/bin/mysqld_safe --port=3306 --socket=/Applications/MAMP/tmp/mysql/mysql.sock --pid-file=/Applications/MAMP/tmp/mysql/mysql.pid --log-error=/Applications/MAMP/logs/mysql_error_log &
+open /Applications/MAMP\ No\ Password.app
 
+open /Applications/MAMP/MAMP.app
+
+open /Applications/Utilities/Terminal.app
+
+sleep 10
 
 open http://home.dev
 
