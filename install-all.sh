@@ -252,4 +252,8 @@ sleep 10
 
 open http://home.dev
 
+drush dl drush_language -y
+
+drush dl drush_entity -y
+
 source ~/.bash_profile
