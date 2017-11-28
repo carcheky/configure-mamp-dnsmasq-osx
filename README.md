@@ -20,4 +20,5 @@ chmod +x install-all.sh
 
 sources:
 - http://www.46palermo.com/blog/run-mamp-without-password-easy-way/
+- https://gist.github.com/mgalloway/7121912
 
