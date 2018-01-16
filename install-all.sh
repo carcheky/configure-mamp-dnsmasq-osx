@@ -29,7 +29,7 @@ sudo echo "
 ================================================================================
     Installing composer
 ================================================================================"
-curl -sS https://getcomposer.org/installer | php
+sudo curl -sS https://getcomposer.org/installer | sudo php
 sudo mv composer.phar /usr/local/bin/composer
 
 
@@ -48,7 +48,6 @@ fi
 if [[ -d ~/.drush ]]; then
   sudo mv ~/.drush ~/.drush_backups/${DATE}/.drush.${DATE}.backup
 fi
-open ~/.drush_backups/${DATE}
 open /Applications/Utilities/Terminal.app
 
 sudo echo "
@@ -58,10 +57,14 @@ sudo echo "
 composer global require drush/drush
 open /Applications/Utilities/Terminal.app
 echo "Introduzca su contraseña para continuar:"
-sudo ln -s ~/.composer/vendor/drush/drush/drush /usr/bin/drush
-yes|drush init
+ln -s ~/.composer/vendor/drush/drush/drush ~/bin/drush
+yes | drush init
 echo " " >> ~/.bash_profile
 cat ~/.bashrc >> ~/.bash_profile
+echo " " >> ~/.bash_profile
+echo "PATH=\$PATH:~/bin" >>  ~/.bash_profile
+subl .bash_profile
+
 rm ~/.bashrc
 source ~/.bash_profile
 drush version
